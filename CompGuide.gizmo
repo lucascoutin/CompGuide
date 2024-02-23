@@ -1,0 +1,613 @@
+Group {
+ name CompGuide
+ tile_color 0xff
+ addUserKnob {20 User l CompGuide}
+ addUserKnob {6 thirds l "Rule of Thirds" t "Rule of Thirds guides." +STARTLINE}
+ thirds true
+ addUserKnob {6 center l Center t "Symmetry guides." -STARTLINE}
+ addUserKnob {6 diagonal l Diagonal t "Diagonal guides." -STARTLINE}
+ addUserKnob {6 gold l "Golden Ratio" t "Golden ratio guides. (1+sqrt(5)/2)" +STARTLINE}
+ addUserKnob {6 triangle1 l "Triangle A" t "Golden rate triangle." -STARTLINE}
+ addUserKnob {6 triangle2 l "Triangle B" t "Golden rate triangle." -STARTLINE}
+ addUserKnob {18 color l Color t "Change guide color."}
+ color {1 1 1}
+ addUserKnob {6 color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 thickness l Thickness t "Thickness control." R 1 3}
+ thickness 2
+ addUserKnob {26 ""}
+ addUserKnob {6 custom l "Custom Guide" +STARTLINE}
+ addUserKnob {12 coordinate l Position t "Custom guide control."}
+ coordinate {200 200}
+ addUserKnob {26 ""}
+ addUserKnob {6 grid l "Enable Grid" t "Enable adjustable grid." +STARTLINE}
+ addUserKnob {7 grid_size l Size t "Control grid size." R 2 1000}
+ grid_size 100
+ addUserKnob {7 grid_opacity l Opacity t "Control grid opacity."}
+ grid_opacity 0.5
+ addUserKnob {26 ""}
+ addUserKnob {7 mix_master l Mix t "Dissolve between original image at 0 and the full effect at 1."}
+ mix_master 1
+ addUserKnob {20 info l Info}
+ addUserKnob {26 Information l "" +STARTLINE T "Golden triangles does not work properly using resolutions with custom pixel aspect ratio."}
+ addUserKnob {26 ""}
+ addUserKnob {26 Author l "" +STARTLINE T "Created by <b><a href=\"https://vimeo.com/lucascoutinho\">Lucas L. Coutinho</a></b>"}
+ addUserKnob {26 Version l "" +STARTLINE T "Version: <b>v01</b>"}
+ addUserKnob {26 Year l "" +STARTLINE T "Year: 2024"}
+}
+ StickyNote {
+  inputs 0
+  name StickyNote3
+  tile_color 0xff
+  label Thirds
+  note_font_size 40
+  xpos -1851
+  ypos 374
+  bookmark true
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote4
+  tile_color 0xff
+  label "Golden Ratio"
+  note_font_size 40
+  xpos -1578
+  ypos 369
+  bookmark true
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote7
+  tile_color 0xff
+  label Diagonal
+  note_font_size 40
+  xpos -291
+  ypos 371
+  bookmark true
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote2
+  tile_color 0xff
+  label Center
+  note_font_size 40
+  xpos -2127
+  ypos 376
+  bookmark true
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote8
+  tile_color 0xff
+  label Custom
+  note_font_size 40
+  xpos -2421
+  ypos 372
+  bookmark true
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote1
+  tile_color 0xff
+  label Grid
+  note_font_size 40
+  xpos -2661
+  ypos 378
+  bookmark true
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote6
+  tile_color 0xff
+  label "Triangle 2"
+  note_font_size 40
+  xpos -769
+  ypos 1745
+  bookmark true
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote5
+  tile_color 0xff
+  label "Triangle 1"
+  note_font_size 40
+  xpos -1234
+  ypos 1488
+  bookmark true
+ }
+ Input {
+  inputs 0
+  name Source
+  xpos 348
+  ypos 114
+ }
+ Reformat {
+  type scale
+  scale {{curve x30 1}}
+  black_outside true
+  name Reformat3
+  xpos 348
+  ypos 273
+ }
+ Dot {
+  name Dot21
+  xpos 382
+  ypos 465
+ }
+set N50b1ec00 [stack 0]
+ Remove {
+  name Remove4
+  xpos 74
+  ypos 456
+ }
+ Dot {
+  name Dot6
+  xpos -198
+  ypos 465
+ }
+set N50b1f400 [stack 0]
+ Dot {
+  name Dot12
+  xpos -865
+  ypos 465
+ }
+set N50b1f800 [stack 0]
+ Dot {
+  name Dot8
+  xpos -1456
+  ypos 465
+ }
+set N50b1fc00 [stack 0]
+ Dot {
+  name Dot4
+  xpos -1785
+  ypos 465
+ }
+set N50b3c000 [stack 0]
+ Dot {
+  name Dot5
+  xpos -2067
+  ypos 465
+ }
+set N50b3c400 [stack 0]
+ Dot {
+  name Dot19
+  xpos -2356
+  ypos 465
+ }
+set N50b3c800 [stack 0]
+ Dot {
+  name Dot15
+  xpos -2622
+  ypos 465
+ }
+ Expression {
+  channel0 rgba
+  expr0 "clamp(((x+1) % floor(grid_size+1) == 0) + ((y+1) % floor(grid_size+1) == 0))"
+  name Grid
+  xpos -2656
+  ypos 570
+  addUserKnob {20 User}
+ }
+ Remove {
+  name Remove6
+  xpos -2656
+  ypos 967
+  disable {{grid}}
+ }
+ Dot {
+  name Dot13
+  xpos -2622
+  ypos 2227
+ }
+push $N50b1f400
+ Reformat {
+  type scale
+  scale {{curve x30 2}}
+  resize none
+  name Reformat1
+  xpos -232
+  ypos 593
+ }
+ Expression {
+  channel0 rgba
+  expr0 "y % floor(pos.y) == 0 ? y == floor(pos.y) : 0"
+  name Diagonal
+  xpos -232
+  ypos 633
+  addUserKnob {20 User}
+  addUserKnob {12 pos l Position}
+  pos {{input.width/2} {input.height/2 x93 536}}
+ }
+ Blur {
+  size {{thickness-1}}
+  name Blur2
+  xpos -232
+  ypos 708
+ }
+ Expression {
+  channel0 rgba
+  expr0 "r > 0 ? 1 : 0"
+  name Expression2
+  xpos -232
+  ypos 760
+ }
+ Transform {
+  rotate {{"degrees(atan2(input.height, input.width))"}}
+  center {{input.width/2} {input.height/2}}
+  name Transform1
+  xpos -232
+  ypos 838
+ }
+set N50b5b000 [stack 0]
+ Mirror2 {
+  flop true
+  name Mirror2_1
+  xpos -80
+  ypos 838
+ }
+ Dot {
+  name Dot10
+  xpos -46
+  ypos 932
+ }
+push $N50b5b000
+ Merge2 {
+  inputs 2
+  operation max
+  bbox B
+  name Merge4
+  xpos -232
+  ypos 929
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.Reformat1.scale}}
+  resize none
+  name Reformat2
+  xpos -232
+  ypos 1014
+ }
+ Remove {
+  name Remove5
+  xpos -232
+  ypos 1110
+  disable {{diagonal}}
+ }
+ Dot {
+  name Dot9
+  xpos -198
+  ypos 2090
+ }
+push $N50b5b000
+ Dot {
+  name Dot16
+  xpos -495
+  ypos 841
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.Reformat1.scale}}
+  resize none
+  name Reformat6
+  xpos -529
+  ypos 1129
+ }
+ Dot {
+  name Dot17
+  xpos -495
+  ypos 1440
+ }
+push $N50b1f800
+ Reformat {
+  type scale
+  scale {{curve x30 2}}
+  resize none
+  name Reformat4
+  xpos -899
+  ypos 599
+ }
+ AdjBBox {
+  numpixels {{input.width}}
+  name AdjBBox1
+  xpos -899
+  ypos 639
+ }
+ Expression {
+  channel0 rgba
+  expr0 "y % floor(pos.y) == 0 ? y == floor(pos.y) : 0"
+  name Line
+  xpos -899
+  ypos 679
+  addUserKnob {20 User}
+  addUserKnob {12 pos l Position}
+  pos {{input.width/4} {(input.height/4)*3 x93 536}}
+ }
+ Blur {
+  size {{thickness-1}}
+  name Blur3
+  xpos -899
+  ypos 773
+ }
+ Expression {
+  channel0 rgba
+  expr0 "r > 0 ? 1 : 0"
+  name Expression3
+  xpos -899
+  ypos 825
+ }
+ Transform {
+  rotate {{"degrees(atan2(input.height, input.width))-90"}}
+  center {{parent.Line.pos} {parent.Line.pos}}
+  name Transform3
+  xpos -899
+  ypos 865
+ }
+ Dot {
+  name Dot14
+  xpos -865
+  ypos 1047
+ }
+set N71733c00 [stack 0]
+ Mirror2 {
+  flip true
+  flop true
+  name Mirror2_4
+  xpos -747
+  ypos 1044
+ }
+ Dot {
+  name Dot11
+  xpos -713
+  ypos 1138
+ }
+push $N71733c00
+ Merge2 {
+  inputs 2
+  operation max
+  bbox B
+  name Merge6
+  xpos -899
+  ypos 1135
+ }
+ Reformat {
+  type scale
+  scale {{1/parent.Reformat4.scale}}
+  resize none
+  name Reformat5
+  xpos -899
+  ypos 1220
+ }
+ Merge2 {
+  inputs 2
+  operation max
+  bbox B
+  name Merge7
+  xpos -899
+  ypos 1437
+ }
+ Dot {
+  name Dot18
+  xpos -865
+  ypos 1586
+ }
+set N71763800 [stack 0]
+ Mirror2 {
+  flop true
+  name Mirror2_5
+  xpos -899
+  ypos 1733
+ }
+ Remove {
+  name Remove8
+  xpos -899
+  ypos 1773
+  disable {{triangle2}}
+ }
+push 0
+push $N71763800
+ Remove {
+  name Remove7
+  xpos -1175
+  ypos 1577
+  disable {{triangle1}}
+ }
+push $N50b3c800
+ Expression {
+  channel0 rgba
+  expr0 "clamp((x % floor(pos.x) == 0 ? x == floor(pos.x) : 0) + (y % floor(pos.y) == 0 ? y == floor(pos.y) : 0))"
+  name Custom
+  xpos -2390
+  ypos 575
+  addUserKnob {20 User}
+  addUserKnob {12 pos l Position}
+  pos {{coordinate.x} {coordinate.y}}
+ }
+ Remove {
+  name Remove9
+  xpos -2390
+  ypos 965
+  disable {{custom}}
+ }
+ Dot {
+  name Dot20
+  xpos -2356
+  ypos 1611
+ }
+push $N50b1fc00
+ Expression {
+  channel0 rgba
+  expr0 "clamp((x % floor(pos.x) == 0 ? x == floor(pos.x) : 0) + (y % floor(pos.y) == 0 ? y == floor(pos.y) : 0))"
+  name Golden
+  xpos -1490
+  ypos 578
+  addUserKnob {20 User}
+  addUserKnob {12 pos l Position}
+  pos {{input.width/golden} {input.height/golden x93 536}}
+  addUserKnob {7 golden l "Golden Ration"}
+  golden {{"(1 + sqrt(5))/2"}}
+ }
+ Dot {
+  name Dot3
+  xpos -1456
+  ypos 691
+ }
+set N7178d800 [stack 0]
+ Mirror2 {
+  flip true
+  flop true
+  name Mirror2_3
+  xpos -1348
+  ypos 688
+ }
+ Dot {
+  name Dot7
+  xpos -1314
+  ypos 801
+ }
+push $N7178d800
+ Merge2 {
+  inputs 2
+  operation max
+  bbox B
+  name Merge2
+  xpos -1490
+  ypos 798
+ }
+ Remove {
+  name Remove3
+  xpos -1490
+  ypos 972
+  disable {{gold}}
+ }
+push 0
+push $N50b3c400
+ Expression {
+  channel0 rgba
+  expr0 "clamp((x % floor(pos.x) == 0 ? x == floor(pos.x) : 0) + (y % floor(pos.y) == 0 ? y == floor(pos.y) : 0))"
+  name Center
+  xpos -2101
+  ypos 574
+  addUserKnob {20 User}
+  addUserKnob {12 pos l Position}
+  pos {{input.width/2} {input.height/2 x93 536}}
+ }
+ Remove {
+  name Remove1
+  xpos -2101
+  ypos 965
+  disable {{center}}
+ }
+push $N50b3c000
+ Expression {
+  channel0 rgba
+  expr0 "clamp((x % floor(pos.x) == 0 ? x == floor(pos.x) : 0) + (y % floor(pos.y) == 0 ? y == floor(pos.y) : 0))"
+  name Thirds
+  xpos -1819
+  ypos 576
+  addUserKnob {20 User}
+  addUserKnob {12 pos l Position}
+  pos {{input.width/3} {input.height/3 x93 536}}
+ }
+ Dot {
+  name Dot2
+  xpos -1785
+  ypos 682
+ }
+set N717bf800 [stack 0]
+ Mirror2 {
+  flip true
+  flop true
+  name Mirror2_2
+  xpos -1677
+  ypos 679
+ }
+ Dot {
+  name Dot1
+  xpos -1643
+  ypos 792
+ }
+push $N717bf800
+ Merge2 {
+  inputs 2
+  operation max
+  bbox B
+  name Merge1
+  xpos -1819
+  ypos 789
+ }
+ Remove {
+  name Remove2
+  xpos -1819
+  ypos 964
+  disable {{thirds}}
+ }
+ Merge2 {
+  inputs 4+1
+  operation plus
+  bbox B
+  name Plus
+  xpos -1490
+  ypos 1608
+ }
+ Blur {
+  size {{thickness-1}}
+  name Blur1
+  xpos -1490
+  ypos 1814
+ }
+ Expression {
+  channel0 rgba
+  expr0 "r > 0 ? 1 : 0"
+  name Expression1
+  xpos -1490
+  ypos 1866
+ }
+ Merge2 {
+  inputs 4+1
+  operation plus
+  bbox B
+  name Plus1
+  xpos -1490
+  ypos 2087
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  bbox B
+  mix {{grid_opacity}}
+  name Merge5
+  xpos -1490
+  ypos 2224
+ }
+ Clamp {
+  name Clamp1
+  xpos -1490
+  ypos 2337
+ }
+ Multiply {
+  value {{color.r} {color.g} {color.b} 1}
+  name Multiply1
+  xpos -1490
+  ypos 2389
+ }
+ Dot {
+  name Dot22
+  xpos -1456
+  ypos 2601
+ }
+push $N50b1ec00
+ Merge2 {
+  inputs 2
+  bbox B
+  Achannels rgb
+  mix {{mix_master}}
+  name Merge8
+  xpos 348
+  ypos 2598
+ }
+ Output {
+  name Output1
+  xpos 348
+  ypos 2840
+ }
+end_group
