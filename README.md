@@ -1,4 +1,4 @@
-Procedural generated photography basic guides.
+Procedurally generated photography basic guides.
 
 ![alt text](https://klearrender.files.wordpress.com/2024/02/compguideexample.jpg)
 
