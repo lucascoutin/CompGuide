@@ -1,5 +1,4 @@
 Group {
- name CompGuide
  tile_color 0xff
  addUserKnob {20 User l CompGuide}
  addUserKnob {6 thirds l "Rule of Thirds" t "Rule of Thirds guides." +STARTLINE}
@@ -133,7 +132,7 @@ Group {
   xpos 382
   ypos 465
  }
-set N50b1ec00 [stack 0]
+set Nb0f12000 [stack 0]
  Remove {
   name Remove4
   xpos 74
@@ -144,46 +143,51 @@ set N50b1ec00 [stack 0]
   xpos -198
   ypos 465
  }
-set N50b1f400 [stack 0]
+set Nb0f12800 [stack 0]
  Dot {
   name Dot12
   xpos -865
   ypos 465
  }
-set N50b1f800 [stack 0]
+set Nb0f12c00 [stack 0]
  Dot {
   name Dot8
   xpos -1456
   ypos 465
  }
-set N50b1fc00 [stack 0]
+set Nb0f13000 [stack 0]
  Dot {
   name Dot4
   xpos -1785
   ypos 465
  }
-set N50b3c000 [stack 0]
+set Nb0f13400 [stack 0]
  Dot {
   name Dot5
   xpos -2067
   ypos 465
  }
-set N50b3c400 [stack 0]
+set Nb0f13800 [stack 0]
  Dot {
   name Dot19
   xpos -2356
   ypos 465
  }
-set N50b3c800 [stack 0]
+set Nb0f13c00 [stack 0]
  Dot {
   name Dot15
   xpos -2622
   ypos 465
  }
  Expression {
+  temp_name0 cx
+  temp_expr0 input.width/2
+  temp_name1 cy
+  temp_expr1 input.height/2
   channel0 rgba
-  expr0 "clamp(((x+1) % floor(grid_size+1) == 0) + ((y+1) % floor(grid_size+1) == 0))"
+  expr0 "clamp(((x-cx) % floor(grid_size+1) == 0) + ((y-cy) % floor(grid_size+1) == 0))"
   name Grid
+  selected true
   xpos -2656
   ypos 570
   addUserKnob {20 User}
@@ -199,7 +203,7 @@ set N50b3c800 [stack 0]
   xpos -2622
   ypos 2227
  }
-push $N50b1f400
+push $Nb0f12800
  Reformat {
   type scale
   scale {{curve x30 2}}
@@ -238,7 +242,7 @@ push $N50b1f400
   xpos -232
   ypos 838
  }
-set N50b5b000 [stack 0]
+set Na81e4400 [stack 0]
  Mirror2 {
   flop true
   name Mirror2_1
@@ -250,7 +254,7 @@ set N50b5b000 [stack 0]
   xpos -46
   ypos 932
  }
-push $N50b5b000
+push $Na81e4400
  Merge2 {
   inputs 2
   operation max
@@ -278,7 +282,7 @@ push $N50b5b000
   xpos -198
   ypos 2090
  }
-push $N50b5b000
+push $Na81e4400
  Dot {
   name Dot16
   xpos -495
@@ -297,7 +301,7 @@ push $N50b5b000
   xpos -495
   ypos 1440
  }
-push $N50b1f800
+push $Nb0f12c00
  Reformat {
   type scale
   scale {{curve x30 2}}
@@ -347,7 +351,7 @@ push $N50b1f800
   xpos -865
   ypos 1047
  }
-set N71733c00 [stack 0]
+set N87eef000 [stack 0]
  Mirror2 {
   flip true
   flop true
@@ -360,7 +364,7 @@ set N71733c00 [stack 0]
   xpos -713
   ypos 1138
  }
-push $N71733c00
+push $N87eef000
  Merge2 {
   inputs 2
   operation max
@@ -390,7 +394,7 @@ push $N71733c00
   xpos -865
   ypos 1586
  }
-set N71763800 [stack 0]
+set N94aa4c00 [stack 0]
  Mirror2 {
   flop true
   name Mirror2_5
@@ -404,14 +408,14 @@ set N71763800 [stack 0]
   disable {{triangle2}}
  }
 push 0
-push $N71763800
+push $N94aa4c00
  Remove {
   name Remove7
   xpos -1175
   ypos 1577
   disable {{triangle1}}
  }
-push $N50b3c800
+push $Nb0f13c00
  Expression {
   channel0 rgba
   expr0 "clamp((x % floor(pos.x) == 0 ? x == floor(pos.x) : 0) + (y % floor(pos.y) == 0 ? y == floor(pos.y) : 0))"
@@ -433,7 +437,7 @@ push $N50b3c800
   xpos -2356
   ypos 1611
  }
-push $N50b1fc00
+push $Nb0f13000
  Expression {
   channel0 rgba
   expr0 "clamp((x % floor(pos.x) == 0 ? x == floor(pos.x) : 0) + (y % floor(pos.y) == 0 ? y == floor(pos.y) : 0))"
@@ -451,7 +455,7 @@ push $N50b1fc00
   xpos -1456
   ypos 691
  }
-set N7178d800 [stack 0]
+set N94ad2c00 [stack 0]
  Mirror2 {
   flip true
   flop true
@@ -464,7 +468,7 @@ set N7178d800 [stack 0]
   xpos -1314
   ypos 801
  }
-push $N7178d800
+push $N94ad2c00
  Merge2 {
   inputs 2
   operation max
@@ -480,7 +484,7 @@ push $N7178d800
   disable {{gold}}
  }
 push 0
-push $N50b3c400
+push $Nb0f13800
  Expression {
   channel0 rgba
   expr0 "clamp((x % floor(pos.x) == 0 ? x == floor(pos.x) : 0) + (y % floor(pos.y) == 0 ? y == floor(pos.y) : 0))"
@@ -497,7 +501,7 @@ push $N50b3c400
   ypos 965
   disable {{center}}
  }
-push $N50b3c000
+push $Nb0f13400
  Expression {
   channel0 rgba
   expr0 "clamp((x % floor(pos.x) == 0 ? x == floor(pos.x) : 0) + (y % floor(pos.y) == 0 ? y == floor(pos.y) : 0))"
@@ -513,7 +517,7 @@ push $N50b3c000
   xpos -1785
   ypos 682
  }
-set N717bf800 [stack 0]
+set Na811ec00 [stack 0]
  Mirror2 {
   flip true
   flop true
@@ -526,7 +530,7 @@ set N717bf800 [stack 0]
   xpos -1643
   ypos 792
  }
-push $N717bf800
+push $Na811ec00
  Merge2 {
   inputs 2
   operation max
@@ -595,7 +599,7 @@ push $N717bf800
   xpos -1456
   ypos 2601
  }
-push $N50b1ec00
+push $Nb0f12000
  Merge2 {
   inputs 2
   bbox B
