@@ -1,4 +1,5 @@
 Group {
+ name CompGuide
  tile_color 0xff
  addUserKnob {20 User l CompGuide}
  addUserKnob {6 thirds l "Rule of Thirds" t "Rule of Thirds guides." +STARTLINE}
